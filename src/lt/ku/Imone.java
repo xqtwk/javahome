@@ -22,9 +22,9 @@ public class Imone {
             switch (options) {
                 case "q":
                     System.out.println("Iveskite darbuotojo duomenis(vardas,pavarde,atlyginimas)");
-                    String vardas = scan.nextLine();  // Read user input
-                    String pavarde = scan.nextLine();  // Read user input
-                    int alga = scan.nextInt();  // Read user input
+                    String vardas = scan.nextLine();
+                    String pavarde = scan.nextLine();
+                    int alga = scan.nextInt();
                     Darbuotojas worker = new Darbuotojas(vardas,pavarde,alga);
                     dmx.prideti(worker);
                     System.out.println("Darbuotojas pridetas");
@@ -32,7 +32,7 @@ public class Imone {
                     break;
                 case "w":
                     System.out.println("Iveskite darbuotojo id");
-                    int id = scan.nextInt();  // Read user input
+                    int id = scan.nextInt();
                     dmx.pasalinti(id);
                     System.out.println("Darbuotojas pasalintas");
                     dmx.to_String();

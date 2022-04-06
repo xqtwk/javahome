@@ -5,18 +5,7 @@ import java.util.ArrayList;
 
 public class Trikampis {
     private int x,y,z;
-    public static class LygiakrastisTrikampis {
-        private double x,y,z;
 
-        public LygiakrastisTrikampis(double a){
-            x = a; y = a; z = a;
-        }
-
-        public double plotas(){
-            double result = (Math.sqrt(3)*Math.pow(x,2))/4;
-            return result;
-        }
-    }
     public static void main(String[] args) {
         Trikampis A = new Trikampis(5,6,7);
         StatusisTrikampis B = new StatusisTrikampis(5,8);

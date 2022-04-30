@@ -1,27 +1,35 @@
 package lt.ku.sporto_klubas.Entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.validator.constraints.ISBN;
+
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
-@Table(name = "groups_student")
+@Table(name = "clients")
 public class Clients {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @Column(nullable = false, length = 64)
+    @NotNull @NotEmpty
     private String name;
     @Column(nullable = false, length = 64)
+    @NotNull @NotEmpty
     private String surname;
     @Column(nullable = false, length = 64)
+    @Email @NotNull @NotEmpty
     private String email;
     @Column(nullable = false, length = 64)
+    @NotNull @NotEmpty
     private String phone;
+
+
+
     public Clients(){}
     public Clients(String name, String surname, String email, String phone) {
         this.name = name;
@@ -69,4 +77,6 @@ public class Clients {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+
 }

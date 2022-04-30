@@ -12,16 +12,16 @@
         <div class="col-md-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="new_client" th:object="${client}">
+                    <form method="post" action="new_registration" th:object="${registration}">
                         <div class="mb-3">
-                            <label class="form-label">Vardas: </label>
-                            <input type="text" class="form-control" name="name"><br><br>
-                            <label class="form-label">Pavarde: </label>
-                            <input type="text" class="form-control" name="surname"><br><br>
-                            <label class="form-label">Email: </label>
-                            <input type="text" class="form-control" name="email"><br><br>
-                            <label class="form-label">Telefonas: </label>
-                            <input type="text" class="form-control" name="phone"><br><br>
+                            <label class="form-label">Klientas: </label>
+                            <select class="form-control" name="client">
+                                <option th:each="client: ${clients}" th:value="${client.id}" th:text="${client.name}"></option>
+                            </select>
+                            <label class="form-label">Workout'as: </label>
+                                <select class="form-control" name="workout">
+                                    <option th:each="workout: ${workouts}" th:value="${workout.id}" th:text="${workout.name}"></option>
+                                </select>
                         </div>
                         <input type="submit" value="Prideti" class="btn btn-dark">
                     </form>

@@ -7,12 +7,13 @@
           rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+<div th:insert="fragments/navigation.html :: nav"></div>
 <div class="container">
     <div class="row">
         <div class="col-md-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="update_workout" th:object="${workout}">
+                    <form method="post" action="update" th:object="${workout}">
                         <input type="hidden" name="id" th:value="*{id}">
                         <div class="mb-3">
                             <label class="form-label">Pavadinimas: </label>

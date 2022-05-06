@@ -7,13 +7,13 @@
     <link href="/css/Styles.css" rel="stylesheet">
 </head>
 <body>
-
+<div th:insert="fragments/navigation.html :: nav"></div>
 
 <div class="container">
     <div class="row md-5">
         <div class="card index">
             <div class="card-body">
-                <a href="new_workout" class="btn btn-dark">Prideti nauja workout'a</a>
+                <a href="new" class="btn btn-dark">Prideti nauja workout'a</a>
                 <table class="main-table">
                     <tr>
                         <th>Workout'o id</th>
@@ -29,8 +29,8 @@
                         <td th:text="${workout.places}"></td>
                         <td th:text="${workout.location}"></td>
                         <td>
-                            <a th:href="'update_workout?id='+${workout.id}" class="btn btn btn-dark">Redaguoti</a>
-                            <a th:href="'delete_workout?id='+${workout.id}" href="#" class="btn btn btn-dark">Pasalinti</a>
+                            <a th:href="'update?id='+${workout.id}" class="btn btn btn-dark">Redaguoti</a>
+                            <a th:href="'delete?id='+${workout.id}" href="#" class="btn btn btn-dark">Pasalinti</a>
                         </td>
                     </tr>
                 </table>

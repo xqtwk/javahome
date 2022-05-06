@@ -2,27 +2,19 @@ package lt.ku.sporto_klubas.Controller;
 
 
 import lt.ku.sporto_klubas.Entities.Clients;
-import lt.ku.sporto_klubas.Entities.Registrations;
-import lt.ku.sporto_klubas.Entities.Workouts;
 import lt.ku.sporto_klubas.Services.ClientsService;
-import lt.ku.sporto_klubas.Services.RegistrationsService;
-import lt.ku.sporto_klubas.Services.WorkoutsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 
 @Controller
+@RequestMapping("/clients")
 public class ClientsController {
-
-
     @Autowired
     ClientsService clientsService;
     @GetMapping("/")
@@ -32,40 +24,43 @@ public class ClientsController {
         Workouts w = new Workouts("Fitnesas","30/04/2022",6,"sporto sale 1");
         workoutsService.add(w);*/
         model.addAttribute("clients", clientsService.getAllClients());
-        return "index";
+        return "clients";
     }
-    @GetMapping("/new_client")
+    @GetMapping("/new")
     public String clientNew(Model model){
+        model.addAttribute(model.addAttribute("client", new Clients()));
         return "new_client";
     }
-    @PostMapping("/new_client")
-    public String addClient(@Valid @ModelAttribute Clients client, BindingResult result, @RequestParam("name") String name, @RequestParam("surname") String surname, @RequestParam("email") String email,
-                            @RequestParam("phone")String phone, Model model){
+    @PostMapping("/new")
+    public String addClient(@Valid @ModelAttribute(value = "client") Clients client, BindingResult result, @RequestParam("name") String name, @RequestParam("surname") String surname, @RequestParam("email") String email,
+                            @RequestParam("phone")String phone){
         if (result.hasErrors()){
-            return "/new_client";
-        }
+            //model.addAttribute(model.addAttribute("client", new Clients()));
+            //model.addAttribute("client", clientsService.getClients(client.getId()));
+            return "new_client";
+        }else{
         client.setName(name);
         client.setPhone(phone);
         client.setEmail(email);
         client.setSurname(surname);
         //Clients c = new Clients(name,surname,email,phone);
         clientsService.addClients(client);
-        return "redirect:/";
+        return "redirect:/clients/";}
     }
-    @GetMapping("/update_clients")
+    @GetMapping("/update")
     public String clientNew(@RequestParam("id") Integer id, Model model){
         model.addAttribute("client",clientsService.getClients(id));
         return "update_clients";
     }
-    @PostMapping("/update_clients")
+    @PostMapping("/update")
     public String clientUpdate(@ModelAttribute Clients c){
         clientsService.updateClients(c);
-        return "redirect:/";
+        return "redirect:/clients/";
     }
-    @GetMapping("/delete_client")
+    @GetMapping("/delete")
     public String clientDelete(Model model, @RequestParam("id") Integer id){
         clientsService.deleteClients(id);
-        return "redirect:/";
+        return "redirect:/clients/";
     }
 
 

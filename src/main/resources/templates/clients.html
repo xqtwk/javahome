@@ -7,13 +7,13 @@
     <link href="/css/Styles.css" rel="stylesheet">
 </head>
 <body>
-
+<div th:insert="fragments/navigation.html :: nav"></div>
 
 <div class="container">
     <div class="row md-5">
         <div class="card index">
             <div class="card-body">
-                <a href="new_client" class="btn btn-dark">Prideti nauja klienta</a>
+                <a href="new" class="btn btn-dark">Prideti nauja klienta</a>
                 <table class="main-table">
                     <tr>
                         <th>Vardas</th>
@@ -27,8 +27,8 @@
                         <td th:text="${client.email}"></td>
                         <td th:text="${client.phone}"></td>
                         <td>
-                            <a th:href="'update_clients?id='+${client.id}" class="btn btn btn-dark">Redaguoti</a>
-                            <a th:href="'delete_client?id='+${client.id}" href="#" class="btn btn btn-dark">Pasalinti</a>
+                            <a th:href="'update?id='+${client.id}" class="btn btn btn-dark">Redaguoti</a>
+                            <a th:href="'delete?id='+${client.id}" href="#" class="btn btn btn-dark">Pasalinti</a>
                         </td>
                     </tr>
                 </table>

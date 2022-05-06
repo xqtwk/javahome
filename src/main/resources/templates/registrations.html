@@ -7,13 +7,13 @@
     <link href="/css/Styles.css" rel="stylesheet">
 </head>
 <body>
-
+<div th:insert="fragments/navigation.html :: nav"></div>
 
 <div class="container">
     <div class="row md-5">
         <div class="card index">
             <div class="card-body">
-                <a href="new_registration" class="btn btn-dark">Prideti nauja registracija</a>
+                <a href="new" class="btn btn-dark">Prideti nauja registracija</a>
                 <table class="main-table">
                     <tr>
                         <th>Id</th>
@@ -33,7 +33,7 @@
                         <td th:text="${registration.workout.date}"></td>
                         <td th:text="${registration.registration_date}"></td>
                         <td>
-                            <a th:href="'delete_registration?id='+${registration.id}" href="#" class="btn btn btn-dark">Pasalinti</a>
+                            <a th:href="'delete?id='+${registration.id}" href="#" class="btn btn btn-dark">Pasalinti</a>
                         </td>
                     </tr>
                 </table>

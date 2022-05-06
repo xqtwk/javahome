@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+
+<nav th:fragment="nav" class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Sporto sale</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${ #httpServletRequest.getRequestURI()=='/'?'active':'' }"  href="/">Pagrindinis puslapis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${ #httpServletRequest.getRequestURI()=='/group/'?'active':'' }" href="/clients/">Klientai</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${ #httpServletRequest.getRequestURI()=='/student/'?'active':'' }" href="/workouts/">Workout'ai</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${ #httpServletRequest.getRequestURI()=='/student/'?'active':'' }" href="/registrations/">Registracijos</a>
+                </li>
+
+            </ul>
+            <div class="d-flex me-3" sec:authorize="isAuthenticated()" >
+                Sveiki: <span sec:authentication="name"></span>
+            </div>
+            <div class="d-flex px-1" sec:authorize="isAuthenticated()">
+                <a href="/logout" class="btn btn-primary">Atsijungti</a>
+            </div>
+            <div class="d-flex px-1" sec:authorize="!isAuthenticated()">
+                <a href="/login" class="btn btn-primary">Prisijungti</a>
+            </div>
+            <div class="d-flex px-1" sec:authorize="!isAuthenticated()">
+                <a href="/clients/new" class="btn btn-primary">Registruotis</a>
+            </div>
+        </div>
+    </div>
+
+</nav>
+
+</html>

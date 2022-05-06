@@ -21,6 +21,7 @@
                         <th>Data</th>
                         <th>Vietu skaicius</th>
                         <th>Lokacija</th>
+                        <th>Aprasymas</th>
                     </tr>
                     <tr th:each="workout: ${workouts}" style="border-bottom: 1px solid #D5D5D5">
                         <td th:text="${workout.id}"></td>
@@ -28,9 +29,10 @@
                         <td th:text="${workout.date}"></td>
                         <td th:text="${workout.places}"></td>
                         <td th:text="${workout.location}"></td>
+                        <td><a th:href="'/workouts/description/'+${workout.id}" class="btn btn btn-dark px-1">Parsisiųsti</a></td>
                         <td>
-                            <a th:href="'update?id='+${workout.id}" class="btn btn btn-dark">Redaguoti</a>
-                            <a th:href="'delete?id='+${workout.id}" href="#" class="btn btn btn-dark">Pasalinti</a>
+                            <a th:href="'update/'+${workout.id}" class="btn btn btn-dark px-1">Redaguoti</a>
+                            <a th:href="'delete/'+${workout.id}" href="#" class="btn btn btn-dark px-1">Pasalinti</a>
                         </td>
                     </tr>
                 </table>

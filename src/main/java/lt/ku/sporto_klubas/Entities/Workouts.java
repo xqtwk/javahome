@@ -18,7 +18,10 @@ public class Workouts {
     private Integer places;
     @Column(nullable = false, length = 64)
     private String location;
-
+    @Column
+    private String filename;
+    @OneToMany(mappedBy = "workout", fetch = FetchType.EAGER, orphanRemoval = true)
+    private List<Registrations> registrations;
 
     public Workouts(){}
     public Workouts(String name, String date, Integer places, String location) {
@@ -27,7 +30,13 @@ public class Workouts {
         this.places = places;
         this.location = location;
     }
-
+    public Workouts(String name, String date, Integer places, String location, String filename) {
+        this.name = name;
+        this.date = date;
+        this.places = places;
+        this.location = location;
+        this.filename = filename;
+    }
     public Integer getId() {
         return id;
     }
@@ -68,4 +77,19 @@ public class Workouts {
         this.location = location;
     }
 
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public List<Registrations> getRegistrations() {
+        return registrations;
+    }
+
+    public void setRegistrations(List<Registrations> registrations) {
+        this.registrations = registrations;
+    }
 }

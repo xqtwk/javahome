@@ -12,6 +12,8 @@ import java.util.List;
 public class WorkoutsService {
     @Autowired
     WorkoutsRepository workoutsRepository;
+    @Autowired
+    FileStorageService fileStorageService;
     public List<Workouts> getWorkouts() {
         return workoutsRepository.findAll();
     }
@@ -27,6 +29,9 @@ public class WorkoutsService {
         old.setDate(workout.getDate());
         old.setPlaces(workout.getPlaces());
         old.setLocation(workout.getLocation());
+       // System.out.println(workout.getFilename());
+        //System.out.println(old.getFilename());
+        //old.setFilename(workout.getFilename());
         workoutsRepository.save(old);
         return old;
     }

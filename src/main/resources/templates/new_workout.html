@@ -13,7 +13,7 @@
         <div class="col-md-12 mt-5">
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="new" th:object="${workout}">
+                    <form method="post" action="new" th:object="${workout}" enctype="multipart/form-data">
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                         <div class="mb-3">
                             <label class="form-label">Pavadinimas: </label>
@@ -24,6 +24,10 @@
                             <input type="text" class="form-control" name="places"><br><br>
                             <label class="form-label">Lokacija: </label>
                             <input type="text" class="form-control" name="location"><br><br>
+                            <div class="mb-3">
+                                <label class="form-label">Aprasymo failas: </label>
+                                <input type="file" class="form-control" name="description">
+                            </div>
                         </div>
                         <input type="submit" value="Prideti" class="btn btn-dark">
                     </form>

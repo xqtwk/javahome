@@ -15,7 +15,7 @@ public class Registrations {
     @OneToOne
     @JoinColumn(name = "client_id")
     private Clients clients;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "workout_id")
     private Workouts workout;
     @Column(nullable = false, length = 64)

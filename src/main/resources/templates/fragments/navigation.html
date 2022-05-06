@@ -28,13 +28,13 @@
                 Sveiki: <span sec:authentication="name"></span>
             </div>
             <div class="d-flex px-1" sec:authorize="isAuthenticated()">
-                <a href="/logout" class="btn btn-primary">Atsijungti</a>
+                <a href="/logout" class="btn btn btn-dark">Atsijungti</a>
             </div>
             <div class="d-flex px-1" sec:authorize="!isAuthenticated()">
-                <a href="/login" class="btn btn-primary">Prisijungti</a>
+                <a href="/login" class="btn btn btn-dark">Prisijungti</a>
             </div>
             <div class="d-flex px-1" sec:authorize="!isAuthenticated()">
-                <a href="/clients/new" class="btn btn-primary">Registruotis</a>
+                <a href="/clients/new" class="btn btn btn-dark">Registruotis</a>
             </div>
         </div>
     </div>
